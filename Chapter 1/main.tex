@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\date{}
+
+\title{\textbf{Quantum Computing: An Applied Approach}\\\vspace*{1cm}
+Chapter 1 Problems: \\
+Superposition, Entanglement, and Reversibility
+}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+For a single particle sent one-at-a-time through the pictured Dirac double-slit experimental setup, the initial particle state can be described as a wave function $|\psi\rangle$. As this wavefunction is distributed throughout space, it can be projected onto the Hilbert subspace spanned by position eigenvectors, $\psi(x)=\langle x|\psi\rangle$. Passing through either of the slits $b$ or $c$ projects $|\psi\rangle$ onto the associated diffractive state, yielding output $\langle\psi|b\rangle|b\rangle$ and $\langle\psi|c\rangle|c\rangle$ respectively. Projecting this measurement onto the far screen $\mathbf{F}$ yields the oscillatory light-dark pattern seen in Figure 1.
+
+In the case where the position of the particle is measured immediately before it reaches the two slits, the wavefunction's distribution over position space will collapse to a Dirac distribution about a single measured position, $|\psi(x_0\rangle=\delta(x_0)$. In this case, rather than yielding a sinuosidal pattern of intensity on the screen $\mathbf{F}$ caused by superposition of diffusive waveforms from $b$ and $c$, the incident particles will follow a linear trajectory until they impact the wall and will form a random specular pattern.
+
+\section{}
+
+The Stern-Gerlach experiment involved sending a set of electrically neutral particles (silver) with nonzero magnetic moment through an inhomogeneous magnetic field. Classical electrodynamics would predict a force on incident particles $\mathbf{F}_\textnormal{dipole}=(\textbf{m}\cdot\nabla)\textbf{B}$=$m_z\frac{\partial B}{\partial z}$ in the case where the z-axis is defined to lie parallel to the applied magnetic field. The force exerted on each silver particle would then be proportional to the projection of the orientation of its magnetic moment in the z-direction. Under classical assumptions, this would yield a continuous distribution of forces over some interval, and would yield a smooth line segment at the projection screen, as denoted by point 4 in the included diagram.
+
+In contrast, two distinct points of incidence at the upper and lower bounds of the anticipated line segment were observed on the projective screen at the end of the experiment. This suggested that the angular momentum of the electrons in the silver atoms fired through the gap, proportional to their magnetic moments, could occupy only one of two distinct possible states under observation.
+
+In terms of Dirac notation, let the states of the incident electrons span the basis vectors $|+\rangle$ and $|-\rangle$, so that an arbitrary angular momentum state can be expressed as $c_{+}|+\rangle+c_{-}|-\rangle$, with $|c_{+}|^2+|c_{-}|^2=1$ assuming no other possible outcomes. Assuming a uniform distribution of $|c_{+}|^2$ from 0 to 1 in the incident silver particles, nearly exactly half of the particles will probabilistically project onto the state $|+\rangle$ and appear on the top point of the screen, while the rest will project onto th bottom.
+
+\section{}
+
+The Landauer bound $kT\textnormal{ln}(2)$ describes the minimum amount of energy dissipated in an irreversible operation that erases a single bit.
+
+In the case of five bit erasures, this yields a minimum energy dissipation of $\boxed{\sum_{i=1}^{5}kT_i\textnormal{ln}(2)}$, where $k$ is Boltzmann's constant and $T_i$ is the temperature of each bit.
+
+If the bits are known to be correlated with each other, this may imply that the actual amount of information stored within the system is less than five bits. In this case it may take more than $n$ `bit' changes to erase $n$ bits of information, but the Landauer bound still holds.
+
+\section{}
+
+Yes. By Zorn's Lemma and the Gram-Schmidt process \cite{zorn}, every Hilbert space admits an infinite basis. Additionally, the tensor product of two Hilbert spaces is also a Hilbert space under the metric space completion of the inner product metric on each Hilbert space.
+
+While entangled states such as $\frac{2|00\rangle+3|11\rangle}{\sqrt{13}}$ cannot be expressed as a superposition of separable pure states $\{|00\rangle,|01\rangle,|10\rangle,|11\rangle\}$, this and other entangled states can be expressed as a linear combination of entangled basis states, in this case the standard Bell basis.
+
+\section{}
+
+Let $|\psi\rangle$ be an arbitrary state in a Hilbert space corresponding to some observable $O$. By the Spectral Theorem, it can be expressed as a linear combination of eigenvectors $\{|\psi_i\rangle\}$, $|\psi\rangle=\sum_{i=1}^{n}c_i|\psi_i\rangle$. The inner product magnitude of this state is $$\langle\psi |\psi\rangle=\langle(\sum_{i=1}^{n}c_i^{*}\psi_i) | (\sum_{j=1}^{m}c_j^{*}\psi_j)\rangle=\sum_{i=1}^{n}\sum_{j=1}^{m}c_i^{*}c_j\langle \psi_i|\psi_j\rangle=$$
+$$\sum_{i=1}^{m}\sum_{j=1}^{n}c_i^{*}c_j\delta_{ij}=\sum_{i=1}^{n}|c_i|^2$$.
+Assuming the initial state is normalized, let $\langle\psi|\psi\rangle=\sum_{i=1}^{n}|c_i|^2=1$.
+
+Measurement of the state $|\psi\rangle$ with the projective operator $O$ projects $|\psi\rangle$ onto a single eigenstate $c_o|\psi_o\rangle$ where $c_o$ is the complex coefficient of the corresponding eigenvector in the initial state superposition; the underlying origins of this mechanism are not fully understood. The relative amplitude of this state's coefficient is $|c_o|^2$. The probability of this transition is proportional to the ratio of relative inner product amplitudes, so that $$p_o=\frac{\langle\psi_o|\psi_o\rangle}{\langle\psi|\psi|rangle}=\frac{|c_o|^2}{\sum_{i=1}^{n}|c_i|^2}=\boxed{|c_o|^2}$$
+
+
+\section{}
+
+Let the two quantum states occupy the tensor product of Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B$, so that the joint state $\psi\in\mathcal{H}_A\otimes\mathcal{H}_B$. Non-separability describes a quantum state that cannot be factored in the form $\psi_A\otimes\psi_B$ for $\psi_A\in\mathcal{H}_A$ and $\psi_B\in\mathcal{H}_B$.
+
+For example, for systems with two observable states $\{|0\rangle, |1\rangle\}$, separable states are $\{|00\rangle,|01\rangle,|10\rangle,|11\rangle\}$ because they can each be factored in the form $|a\rangle\otimes|b\rangle$ for $|a\rangle\in\mathcal{H}_A$ and $|b\rangle\in\mathcal{H}_B$.
+
+Examples of non-separable states are the Bell states $\{\frac{|00\rangle+|11\rangle}{\sqrt{2}},\frac{|00\rangle-|11\rangle}{\sqrt{2}},\frac{|01\rangle+|10\rangle}{\sqrt{2}},\frac{|01\rangle-|10\rangle}{\sqrt{2}}$ because they cannot be expressed as a product of pure states in $\mathcal{H}_A$ and $\mathcal{H}_B$. Furthermore, measurement of a non-separable (entangled) state is correlated between $\mathcal{H}_A$ and $\mathcal{H}_B$, since measurement of ex. $|0\rangle$ in A ensures that B will yield the state $|0\rangle$ when beginning with the entangled state $\frac{|00\rangle+|11\rangle}{\sqrt{2}}$.
+
+\bibliographystyle{abbrv}
+\bibliography{citations}
+\end{document}
