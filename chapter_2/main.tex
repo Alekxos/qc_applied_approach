@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\date{}
+
+\title{\textbf{Quantum Computing: An Applied Approach}\\\vspace*{1cm}
+Chapter 2 Problems: \\
+A Brief History of Quantum Computing
+}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+(a) No. This system is not necessarily scalable to higher numbers of qubits (1), may not maintain coherent states for sufficient periods to perform gate operations (3), and does not necessarily facilitate two-qubit gate operations (4).\newline
+(b) No. This system does not clearly define distinctly demarcated qubits (1), does not clearly define whether the ground state is a $|0\rangle$ basis state (2), has no coherence guarantees (3), has not demonstrated single- or double-qubit gate operations (4), and has not been shown to facilitate strong measurements (5).
+
+\section{}
+
+Unitary gate operations do not operate on 3-vectors, they involve operation of a unitary 2x2 complex matrix in the space $\mathbf{C}^{2\times 2}$ on a 2x1 complex vector $\mathbf{C}^{2\times 1}$, yielding another element in the space $\mathbf{C}^{2\times 1}$.
+
+No, no ``dimensional shenanigans'' are occuring here. A state vector can be represented as a point on a sphere because pure states are normalized to a magnitude of 1 via the relation $\langle q|q\rangle=1$. This constraint limits possible states to a subspace of $\mathbf{C}^2$ that is instead isomorphic to $\mathbf{R}^3$, so it can be geometrically represented with three-dimensional geometry. These are still elements of the higher four-dimensional space though, so the restriction of the operation of elements of $\mathbf{C}^{2\times 2}$ on qubit states in this subspace is still well-defined.
+
+\section{}
+
+No, the $CZ$ gate is symmetric. In the standard basis $\{|00\rangle,|01\rangle,|10\rangle,|11\rangle\}$,
+$$
+CZ\coloneqq \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & -1
+\end{pmatrix}
+$$
+
+Flipping the control and target qubits effectively rotates the second and third basis elements into each other, so that the basis ordering instead becomes $\{|00\rangle,|10\rangle,|01\rangle,|11\rangle\}$.
+
+Since the $CZ$ matrix is invariant under the exchange of indices $2\leftrightarrow 3$, the matrix $CZ$ is the same regardless of which qubit is used as target and which as control.
+
+\end{document}
