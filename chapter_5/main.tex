@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{svg}
+\date{}
+
+\title{\textbf{Quantum Computing: An Applied Approach}\\\vspace*{1cm}
+Chapter 5 Problems: Building a Quantum Computer
+}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+There are many possible solutions to this question; as a society, we are still trying to find out which approaches are most viable and scalable in the long-term.
+
+Some possibilities not often considered in the field at the moment include:\newline
+
+(1) \textbf{Quasiparticles}; these often possess unique engineered properties which may prove useful in addressing decoherence or scalability issues. The Majorana fermion quasiparticle is one member of this class, and remains at the center of the subfield of topological quantum computing.\newline
+
+(2) \textbf{Direction of the superconducting current on a circular wire}. Quantum states used as the basis for qubit operations typically rely on discretized observables such as spin, charge, or energy eigenstates. Were quantum states able to be encoded in the sign of a superconducting wire's electron momentum, this may lead to less perturbable states than otherwise. Interactions could be controlled via magnetic field interactions between adjacent wires, though this also might involve some degree of shielding.\newline
+
+(3) \textbf{Exotic matter}. The Standard Model is incomplete, and there are almost certainly other particles such as the hypothesized axion with unknown properties. These properties may be more conducive to balancing a resistance to decoherence with efficient control schemes, although the lack of existing observational measurement of them suggests it may be difficult to interact with them in our Standard Model-based laboratories.
+
+\section{}
+
+There are a variety of approaches that offer the possibility both of quantum information processing and of distributing quantum information. NV vacancy centers have been used to effect distributed quantum memory based on work at TU Delft. Coupling schemes between nanomechanical resonators and optical fibers have been proposed by the LINQS Lab at Stanford. Photonic interactions have also shown promise in transmitting information over large distances, even from space. Schemes have additionally been proposed to encode information in superconducting transmon states into photons and convert it once again in superconducting states. Topological quantum states may also serve as excellent ways to encode or transmit quantum information over large distances due to their resistance to decoherence, if Majorana bound states can be experimentally leveraged.
+
+\section{Literature Questions}
+
+\subsection{(a)}
+
+The Hamiltonian consists of two terms, one (-$\frac{\omega_q}{2}\sigma_z$) corresponding to the lowest two qubit energy eigenstates and the other ($\Omega V_d(t)\sigma_y$) to the energy induced by a variable voltage applied to the qubit.
+
+Applying the transformation presented in the referenced paper to the complete Hamiltonian $H=H_0+H_d$, $$i\partial_t|\psi_\text{rf}(t)\rangle=
+\left(i\dot{U}_\text{r}U_\text{rf}^\dagger+U_\text{rf}(H_0+H_d)U_\text{rf}^\dagger\right)=
+\left(i\dot{U}_\text{r}U_\text{rf}^\dagger+U_\text{rf}H_0U_\text{rf}^\dagger\right)+
+\left(U_\text{rf}H_dU_\text{rf}^\dagger\right)$$
+
+The first term in the rightmost expression cancels, as the rotating time removes time dependence and results in $\tilde{H}_0=0$.
+
+The propagator in this case satisfies:\newline $$U_\text{rf}=e^{iH_0t}=e^{-i\frac{\omega_q}{2}\sigma_z}=
+\text{cos}\left(\frac{\omega_q}{2}\right)I-i\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_z$$
+
+Expanding this out, $\tilde{H}_d$ becomes:
+$$
+[\text{cos}\left(\frac{\omega_q}{2}\right)I-i\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_z]
+(\Omega V_d(t)\sigma_y)
+[\text{cos}\left(\frac{\omega_q}{2}\right)I+i\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_z]=
+$$
+$$
+\left(\frac{\omega_q}{2}\right)\sigma_y+
+i\text{cos}\left(\frac{\omega_q}{2}\right)\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_y\sigma_z-
+i\text{cos}\left(\frac{\omega_q}{2}\right)\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_z\sigma_y+\text{sin}^2\left(\frac{\omega_q}{2}\right)\sigma_z\sigma_y\sigma_z=
+$$
+$$
+\left(\text{cos}^2\left(\frac{\omega_q}{2}\right)-\text{sin}^2\left(\frac{\omega_q}{2}\right)\right)\sigma_y+
+i\text{cos}\left(\frac{\omega_q}{2}\right)\text{sin}\left(\frac{\omega_q}{2}\right)[\sigma_y, \sigma_z]=
+$$
+$$
+\text{cos}(\omega_qt)\sigma_y-2\text{cos}\left(\frac{\omega_q}{2}\right)\text{sin}\left(\frac{\omega_q}{2}\right)\sigma_x=
+\text{cos}(\omega_qt)\sigma_y-\text{sin}(\omega_qt)\sigma_x
+$$
+
+Adding back in the $\Omega V_d(t)$ coefficient in front,
+$$
+\boxed{\tilde{H}_d=\Omega V_d(t)(\text{cos}(\omega_qt)\sigma_y-\text{sin}(\omega_qt)\sigma_x)}
+$$
+
+\subsection{(b)}
+
+\begin{align*}
+\tilde{H}_d=\Omega V_d(t)(\text{cos}(\omega_qt)-\text{sin}(\omega_qt)\sigma_x)=
+\Omega V_0v(t)(\text{cos}(\omega_qt)-\text{sin}(\omega_qt)\sigma_x)=
+\end{align*}
+\begin{align*}
+\Omega V_0s(t)(\text{cos}(\phi)\text{sin}(\omega_dt)+\text{sin}(\phi)\text{cos}(\omega_dt))(\text{cos}(\omega_qt))\sigma_y-\text{sin}(\omega_qt)\sigma_x)=
+\end{align*}
+\begin{align*}
+\boxed{\Omega V_0s(t)(I\text{sin}(\omega_dt)+Q\text{cos}(\omega_dt))(\text{cos}(\omega_qt))\sigma_y-\text{sin}(\omega_qt)\sigma_x)}
+\end{align*}
+\textbf{Note}: Both the original paper and the copy of the result on this assignment sheet appear incorrect; the sign between the $I$ and $Q$ terms appears positive.
+
+\subsection{(c)}
+
+$$
+\tilde{H}_d=\Omega V_0s(t)(I\text{sin}(\omega_dt)\text{cos}(\omega_qt)\sigma_y
+-I\text{sin}(\omega_dt)\text{sin}(\omega_qt)\sigma_x
+$$
+$$
++Q\text{cos}(\omega_dt)\text{cos}(\omega_qt)\sigma_y
+-Q\text{cos}(\omega_dt)\text{sin}(\omega_qt)\sigma_x)=
+$$
+$$
+I\cdot\frac{1}{2}(\text{sin}((\omega_d+\omega_w)t)-\text{sin}(\delta_\omega t))\sigma_y
+-I\cdot\frac{1}{2}(\text{cos}(\delta_\omega t)-\text{sin}((\omega_d+\omega_w)t))\sigma_x
+$$
+$$
++Q\cdot\frac{1}{2}(\text{cos}((\omega_d+\omega_w)t)+\text{cos}(\delta_\omega t))\sigma_y
+-Q\cdot\frac{1}{2}(\text{sin}((\omega_d+\omega_w)t)+\text{sin}(\delta_\omega t))\sigma_x=
+$$
+(omitting $\Omega V_0s(t)$ in front)
+$$
+-\frac{1}{2}\Omega V_0s(t)[(I\text{cos}(\delta_\omega t)+Q\text{sin}(\delta_\omega t))\sigma_x
+$$
+$$
++(I\text{sin}(\delta_\omega t)-Q\text{cos}(\delta_\omega t))\sigma_y]=
+$$
+$$
+-\frac{\Omega V_0s(t)}{2}
+\biggl(
+\begin{bmatrix}
+0 & \text{cos}\phi\text{cos}(\delta_\omega t)+\text{sin}\phi\text{sin}(\delta_\omega t)-i\text{cos}\phi\text{sin}(\delta_\omega t)+i\text{sin}\phi\text{cos}(\delta_\omega t)\\
+0 & 0
+\end{bmatrix}
+$$
+$$
++\begin{bmatrix}
+0 & 0\\
+\text{cos}\phi\text{cos}(\delta_\omega t)+\text{sin}\phi\text{sin}(\delta_\omega t)-i\text{cos}\phi\text{sin}(\delta_\omega t)-i\text{sin}\phi\text{cos}(\delta_\omega t) & 0
+\end{bmatrix}
+\biggr)=
+$$
+$$
+-\frac{\Omega V_0s(t)}{2}
+\begin{bmatrix}
+0 & \text{cost}(\delta_\omega t-\phi)-i\text{sin}(\delta_\omega t-\phi) \\
+\text{cost}(\delta_\omega t-\phi)-i\text{sin}(\delta_\omega t-\phi) & 0
+\end{bmatrix}=
+$$
+$$
+\boxed{
+-\frac{\Omega V_0s(t)}{2}
+\begin{bmatrix}
+0 & e^{-i(\delta_\omega t-\phi)} \\
+e^{i(\delta_\omega t-\phi)} & 0
+\end{bmatrix}
+}
+$$
+\subsection{(d)}
+
+For $\delta_\omega=0$, 
+$$
+\tilde{H}_d=
+-\frac{\Omega V_0s(t)}{2}
+\begin{bmatrix}
+0 & e^{i\phi} \\
+e^{-i\phi} & 0
+\end{bmatrix}=
+$$
+$$
+-\frac{\Omega V_0s(t)}{2}
+\begin{bmatrix}
+0 & \text{cos}\phi+i\text{sin}\phi \\
+\text{cos}\phi-i\text{sin}\phi & 0
+\end{bmatrix}=
+-\frac{\Omega V_0s(t)}{2}\biggl(
+\begin{bmatrix}
+0 & \text{cos}\phi \\
+\text{cos}\phi & 0
+\end{bmatrix}
+-\begin{bmatrix}
+0 & -i\text{sin}\phi \\
+i\text{sin}\phi & 0
+\end{bmatrix}\biggr)=
+$$
+$$
+\boxed{-\frac{\Omega V_0s(t)}{2}\left(I\phi\sigma_x-Q\sigma_y\right)}
+$$
+
+\subsection{(e)}
+
+Setting $\phi=0$ yields $I=1, Q=0$, so that $\tilde{H}_d=-\frac{\Omega V_0s(t)}{2}\sigma_x\sim\sigma_x$, corresponding to a rotation about the Bloch sphere x-axis.
+
+\subsection{(f)}
+
+This time setting $\phi=\frac{\pi}{2}$ yields $I=0, Q=1$, so that $\tilde{H}_d=\frac{\Omega V_0s(t)}{2}\sigma_y\sim\sigma_y$, now corresponding to a rotation about the Bloch sphere y-axis.
+
+\subsection{(g)}
+$$
+R_x(\theta)=e^\frac{-i\theta\sigma_x}{2}=\text{cos}(\frac{\theta}{2})I-i\text{sin}(\frac{\theta}{2})\sigma_x
+$$
+
+Setting $\boxed{\theta=\pm\pi}$ nullifies the first term, yielding $
+R_x(\pm)=\mp i\sigma_x\sim\sigma_x$.
+
+\subsection{(h)}
+
+In this case, $\theta(t)=\pm\pi$ must hold so
+$$
+\theta=-\Omega V_0\int_0^t s(t')dt'=-\Omega V_0\int_0^t t'dt'=-\Omega V_0\left(\frac{t^2}{2}\right)
+$$
+
+This has a solution only for $\theta=-\pi$, in which case $t=\boxed{\sqrt{\frac{2\pi}{\Omega V_0}}}$
+
+\end{document}
